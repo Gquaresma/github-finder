@@ -1,41 +1,14 @@
-export interface UserProps {
-  login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
-  name: string;
-  company: string;
-  blog: string;
-  location: string;
-  email: string;
-  hireable: boolean;
-  bio: string;
-  twitter_username: string;
-  public_repos: number;
-  public_gists: number;
-  followers: number;
-  following: number;
-  created_at: Date;
-  updated_at: Date;
-}
+import { ApiResponseData, ApiResponseRepositories } from "./ApiResponse";
 
-export interface UserResProps {
-  avatar_url: string;
-  name: string;
-  login: string;
-  location: string;
-}
+export type userResProps = {
+  avatar_url: ApiResponseData["avatar_url"];
+  name: ApiResponseData["name"];
+  login: ApiResponseData["login"];
+  location: ApiResponseData["location"];
+  repos_list: ApiResponseRepositories[];
+  id: ApiResponseData["id"];
+  followers: ApiResponseData["followers"];
+  public_repos: ApiResponseData["public_repos"];
+};
+
+export type repositoriesList = {};

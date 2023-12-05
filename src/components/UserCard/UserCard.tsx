@@ -1,18 +1,21 @@
 import React from "react";
-import { UserResProps } from "@/types/UserProps";
+import { userResProps } from "@/types/UserProps";
 import { MdLocationPin } from "react-icons/md";
 import sytles from "./UserCard.module.css";
+import Link from "next/link";
 
 export default function UserCard({
   avatar_url,
   name,
   login,
   location,
-}: UserResProps) {
+}: userResProps) {
   return (
     <div className={sytles.userCard}>
       <div className={sytles.userCardAvatar}>
-        <img src={avatar_url} alt={login} />
+        <Link href="/userDetail/">
+          <img src={avatar_url} alt={login} />
+        </Link>
       </div>
       <div className={sytles.userCardInfo}>
         <h2>

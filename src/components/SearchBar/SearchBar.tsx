@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import styles from "./SearchBar.module.css";
+import { UseGlobalContext } from "@/app/context/UserContext";
 
-type SearchBarProps = {
-  loadUser: (userName: string) => Promise<void>;
-};
-
-export default function SearchBar({ loadUser }: SearchBarProps) {
+export default function SearchBar() {
   const [userName, setUser] = useState("");
+  const { getUser } = UseGlobalContext();
 
   const keyEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      loadUser(userName);
-    }
+    if (e.key === "Enter") getUser(userName);
   };
 
   return (
@@ -32,7 +28,7 @@ export default function SearchBar({ loadUser }: SearchBarProps) {
 
         <button
           className={styles.searchButton}
-          onClick={() => loadUser(userName)}
+          onClick={() => getUser(userName)}
         >
           Search
         </button>

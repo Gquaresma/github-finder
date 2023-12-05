@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { UserContextProvider } from "./context/UserContext";
 import { ImGithub } from "react-icons/im";
 import "./globals.css";
 
@@ -18,13 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header>
-          
-          <ImGithub size="3rem" />
-          <h1>GitHub Finder</h1>
-          <p>Histórico de pesquisa</p>
-        </header>
-        {children}
+        <UserContextProvider>
+          <header>
+            <ImGithub size="3rem" />
+            <h1>GitHub Finder</h1>
+            <p>Histórico de pesquisa</p>
+          </header>
+          {children}
+        </UserContextProvider>
       </body>
     </html>
   );
