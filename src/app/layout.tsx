@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { MdHistory } from "react-icons/md";
 import { UserContextProvider } from "./context/UserContext";
 import { ImGithub } from "react-icons/im";
 import "./globals.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +23,18 @@ export default function RootLayout({
       <body className={inter.className}>
         <UserContextProvider>
           <header>
-            <ImGithub size="3rem" />
-            <h1>GitHub Finder</h1>
-            <p>Histórico de pesquisa</p>
+            <div className="logoContainer">
+              <ImGithub size="3rem" />
+              <Link href="/">
+                <h1>GitHub Finder</h1>
+              </Link>
+            </div>
+
+            <Link href="/history" className="historySearch">
+              <MdHistory size="1.7rem" />
+
+              <span>Pesquisados recentemente</span>
+            </Link>
           </header>
           {children}
         </UserContextProvider>
