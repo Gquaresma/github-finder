@@ -1,0 +1,45 @@
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f2a48;
+  width: 100%;
+  border-radius: 12px;
+  padding: 0.7rem;
+  gap: 2rem;
+  box-sizing: border-box;
+  
+}
+
+.searchInput {
+  flex: 1;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 400;
+  background: transparent;
+  border: none;
+  border-radius: none;
+  outline: none;
+}
+
+.searchBar::placeholder {
+  color: #7a8aae;
+}
+
+.searchButton {
+  background-color: #007afb;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
