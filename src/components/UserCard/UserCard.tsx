@@ -13,7 +13,7 @@ export default function UserCard({
   return (
     <div className={sytles.userCard}>
       <div className={sytles.userCardAvatar}>
-        <Link href="/userDetail/">
+        <Link href="/user-detail/">
           <img src={avatar_url} alt={login} />
         </Link>
       </div>

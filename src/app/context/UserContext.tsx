@@ -29,9 +29,9 @@ export function UserContextProvider({ children }: ContextProps) {
   const getRepos = async (
     username: string
   ): Promise<ApiResponseRepositories[]> => {
-    const res: ApiResponseRepositories[] = await api.get(`/${username}/repos`);
+    const res = await api.get<ApiResponseRepositories[]>(`/${username}/repos`);
 
-    return res;
+    return res.data;
   };
 
   const getUser = async (username: string) => {
