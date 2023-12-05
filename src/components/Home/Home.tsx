@@ -31,9 +31,6 @@ export default function HomeComponent() {
 
   return (
     <main className={styles.container}>
-      <header>
-        <h1>GitHub Finder</h1>
-      </header>
 
       <SearchBar loadUser={loadUser} />
 
