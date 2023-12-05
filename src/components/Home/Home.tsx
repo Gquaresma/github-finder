@@ -1,21 +1,29 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { UserProps } from "@/types/UserProps";
+import { UserProps, UserResProps } from "@/types/UserProps";
 import { api } from "@/service/api";
 import styles from "./Home.module.css";
+import UserCard from "../UserCard/UserCard";
 
 export default function HomeComponent() {
-  // const [user, setUser] = useState<UserProps | null>(null);
+  const [user, setUser] = useState<UserResProps | null>(null);
 
   const loadUser = async (userName: string) => {
     try {
       const response = await api.get<UserProps>(`${userName}`);
 
-      const data = JSON.stringify(response.data);
+      const { avatar_url, name, login, location } = response.data;
 
-      console.log(response);
+      const userData = {
+        avatar_url,
+        name,
+        login,
+        location,
+      };
+
+      setUser(userData);
     } catch (error) {
       window.alert("Usuário não encontrado");
     }
@@ -28,6 +36,8 @@ export default function HomeComponent() {
       </header>
 
       <SearchBar loadUser={loadUser} />
+
+      {user && <UserCard {...user} />}
     </main>
   );
 }

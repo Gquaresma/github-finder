@@ -1,0 +1,40 @@
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+  background-color: #1f2a48;
+  border-radius: 12px;
+  padding: 2rem;
+  gap: 4rem;
+  box-sizing: border-box;
+}
+
+.userCardAvatar {
+  display: flex;
+  width: 10rem;
+  height: 10rem;
+}
+
+.userCardAvatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.userCardInfo {
+  font-family: "sans-serif";
+  padding: 1rem;
+  color: #ceced6;
+  width: 60%;
+  height: 10rem;
+  border-radius: 8px;
+  background-color: #141c2f;
+}
+
+.userCardInfo h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
