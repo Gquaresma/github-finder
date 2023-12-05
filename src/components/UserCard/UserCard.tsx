@@ -1,6 +1,8 @@
 import React from "react";
 import { userResProps } from "@/types/UserProps";
 import { MdLocationPin } from "react-icons/md";
+import { BiSolidLogInCircle } from "react-icons/bi";
+import { FaUserAlt } from "react-icons/fa";
 import sytles from "./UserCard.module.css";
 import Link from "next/link";
 
@@ -19,14 +21,20 @@ export default function UserCard({
       </div>
       <div className={sytles.userCardInfo}>
         <h2>
-          <b>Nome:</b> {name}{" "}
+          <b><FaUserAlt size=".8rem"/> Nome</b> {name}{" "}
         </h2>
         <h2>
-          <b>Login:</b> {login}
+          <b>
+            <BiSolidLogInCircle /> Login
+          </b>{" "}
+          {login}
         </h2>
         <h2>
-          {" "}
-          <MdLocationPin /> {location ? location : "Localização não disponível"}
+          <b>
+            {" "}
+            <MdLocationPin /> Localização{" "}
+          </b>{" "}
+          {location ? location : "Localização não disponível"}
         </h2>
       </div>
     </div>

@@ -8,16 +8,15 @@
 .userCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   min-height: 14rem;
   width: 50%;
   border-radius: 12px;
   padding: 1rem;
   gap: 1rem;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   box-sizing: border-box;
- 
 }
 
 .userCardAvatar {
@@ -35,19 +34,30 @@
 }
 
 .userCardInfo {
-  padding: 1rem;
-  color: #ceced6;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
   width: 70%;
   min-height: 10rem;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  /* background-color: #1e2a47; */
+  border-top: 2px solid #334065;
+  border-bottom: 2px solid #334065;
+  color: #ceced6;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .userCardInfo h2 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+}
+.userCardInfo b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #918ca9;
 }
 
 #title {
@@ -57,6 +67,12 @@
 
 .repositoriesContainer {
   overflow: auto;
-  max-height: 700px;
+  max-height: 82vh;
+}
 
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 12px;
 }

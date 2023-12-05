@@ -1,25 +1,40 @@
 .container {
-  font-family: sans-serif;
   color: #ceced6;
   display: flex;
-  padding: 1rem;
   width: 100%;
 }
 
-.container a {
-  text-decoration: none;
+#cardTitle {
   color: #ceced6;
+  font-size: 1.7rem;
 }
 
 .repoBox {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid white
+  background: rgb(31, 42, 72);
+  padding: 1rem 2rem;
+  box-shadow: 1px 1px 4px #0000004a;
 }
 
 .contentContainer {
-  padding: .5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.contentDetails {
+  padding: 0.5rem;
 }
 
-
-
+.contentDetails p {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+}
+.contentDetails b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #918ca9;
+}
