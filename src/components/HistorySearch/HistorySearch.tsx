@@ -9,9 +9,8 @@ export default function HistorySearch() {
   const { searchedUsersList } = UseGlobalContext();
 
   return (
-    <div>
-      <h1 className={styles.title}>Histórico de pesquisa</h1>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <div className={styles.cardContainer}>
         {searchedUsersList.map((user, i) => {
           return <UserCard key={i} {...user} />;
         })}
