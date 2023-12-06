@@ -4,7 +4,7 @@ import { api } from "@/service/api";
 import { ApiResponseData, ApiResponseRepositories } from "@/types/ApiResponse";
 import { userResProps } from "@/types/UserProps";
 import { UserProviderProps } from "@/types/UserProvider";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const GlobalContext = createContext<UserProviderProps>({} as UserProviderProps);
@@ -15,9 +15,15 @@ interface ContextProps {
 
 export function UserContextProvider({ children }: ContextProps) {
   const [user, setUser] = useState<userResProps | null>(null);
-  const [searchedUsersList, setSearchUsersList] = useState<any[]>(() =>
-    JSON.parse(localStorage.getItem("searchedUsers") || "[]")
-  );
+  const [searchedUsersList, setSearchUsersList] = useState<any[]>([]);
+
+  useEffect(() => {
+    const searchedUsers = localStorage.getItem("searchedUsers");
+
+    if (searchedUsers) {
+      setSearchUsersList(JSON.parse(searchedUsers));
+    }
+  }, []);
 
   const addSearchUser = async (searchedUser: userResProps) => {
     const isUserAlreadyAdded = searchedUsersList.some(
@@ -89,25 +95,3 @@ export function UserContextProvider({ children }: ContextProps) {
 export const UseGlobalContext = () => {
   return useContext(GlobalContext);
 };
-
-// const addSearchUser = async (searchedUser: userResProps) => {
-//   const searchedNames = searchedUsersList.map(
-//     (user: userResProps) => user.login
-//   );
-
-//   if (!searchedNames.includes(searchedUser.login)) {
-//     setSearchUsersList((prevSearchUsersList) => [
-//       ...prevSearchUsersList,
-//       searchedUser,
-//     ]);
-//   }
-
-//   setSearchUsersList((updatedSearchUsersList) => {
-//     localStorage.setItem(
-//       "searchedUsers",
-//       JSON.stringify(updatedSearchUsersList)
-//     );
-
-//     return updatedSearchUsersList;
-//   });
-// };
