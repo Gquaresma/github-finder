@@ -14,15 +14,24 @@ interface ContextProps {
 
 export function UserContextProvider({ children }: ContextProps) {
   const [user, setUser] = useState<userResProps | null>(null);
-  const [searchedUsersList, setSearchUsersList] = useState<any>([]);
+  const [searchedUsersList, setSearchUsersList] = useState<any[]>([]);
 
-  const addSearchUser = (searchedUser: userResProps) => {
-    const searchedNames = searchedUsersList.map(
-      (user: userResProps) => user.name
+  const addSearchUser = async (searchedUser: userResProps) => {
+    const isUserAlreadyAdded = searchedUsersList.some(
+      (user) => user.login === searchedUser.login
     );
 
-    if (!searchedNames.includes(searchedUser.name)) {
-      setSearchUsersList([...searchedUsersList, searchedUser]);
+    if (!isUserAlreadyAdded) {
+      setSearchUsersList((prevSearchUsersList) => {
+        const updatedSearchUsersList = [...prevSearchUsersList, searchedUser];
+
+        localStorage.setItem(
+          "searchedUsers",
+          JSON.stringify(updatedSearchUsersList)
+        );
+
+        return updatedSearchUsersList;
+      });
     }
   };
 
@@ -64,6 +73,7 @@ export function UserContextProvider({ children }: ContextProps) {
         user,
         searchedUsersList,
         getUser,
+        setSearchUsersList,
       }}
     >
       {children}
