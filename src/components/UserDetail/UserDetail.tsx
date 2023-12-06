@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { UseGlobalContext } from "@/app/context/UserContext";
 import { MdLocationPin } from "react-icons/md";
 import { VscRepo } from "react-icons/vsc";
@@ -11,12 +11,15 @@ import { BiSolidLogInCircle } from "react-icons/bi";
 import { SlUserFollowing } from "react-icons/sl";
 import { PiIdentificationBadgeLight } from "react-icons/pi";
 
-export default function UserDetail() {
-  const { user } = UseGlobalContext();
+export default function UserDetail({ login }: { login: string }) {
+  const { user, getUser } = UseGlobalContext();
+
+  useEffect(() => {
+    getUser(login);
+  }, []);
 
   return (
     <div className={styles.container}>
-      {/* <h2>Repositórios</h2> */}
       <div className={styles.userCard}>
         <div className={styles.userCardAvatar}>
           <img src={user?.avatar_url} alt={user?.login} />

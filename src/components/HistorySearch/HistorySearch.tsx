@@ -11,10 +11,9 @@ export default function HistorySearch() {
   useEffect(() => {
     const searchedUsers = localStorage.getItem("searchedUsers");
     if (searchedUsers) {
-      console.log('SETOU AQUI ->>>> ', searchedUsers)
       setSearchUsersList(JSON.parse(searchedUsers));
     }
-  }, [setSearchUsersList])
+  }, [])
 
   return (
     

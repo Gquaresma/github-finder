@@ -15,13 +15,16 @@ export default function UserCard({
   return (
     <div className={sytles.userCard}>
       <div className={sytles.userCardAvatar}>
-        <Link href="/user-detail/">
+        <Link href={`/user-detail/${encodeURIComponent(login)}`}>
           <img src={avatar_url} alt={login} />
         </Link>
       </div>
       <div className={sytles.userCardInfo}>
         <h2>
-          <b><FaUserAlt size=".8rem"/> Nome</b> {name}{" "}
+          <b>
+            <FaUserAlt size=".8rem" /> Nome
+          </b>{" "}
+          {name}{" "}
         </h2>
         <h2>
           <b>
