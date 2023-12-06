@@ -30,7 +30,7 @@ export default function SearchBar() {
           className={styles.searchButton}
           onClick={() => getUser(userName)}
         >
-          Search
+          Pesquisar
         </button>
       </div>
     </>
