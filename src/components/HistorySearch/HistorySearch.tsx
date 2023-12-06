@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import { UseGlobalContext } from "@/app/context/UserContext";
 import UserCard from "../UserCard/UserCard";
 import styles from "./HistorySearch.module.css";

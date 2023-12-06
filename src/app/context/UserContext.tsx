@@ -15,7 +15,9 @@ interface ContextProps {
 
 export function UserContextProvider({ children }: ContextProps) {
   const [user, setUser] = useState<userResProps | null>(null);
-  const [searchedUsersList, setSearchUsersList] = useState<any[]>([]);
+  const [searchedUsersList, setSearchUsersList] = useState<any[]>(() =>
+    JSON.parse(localStorage.getItem("searchedUsers") || "[]")
+  );
 
   const addSearchUser = async (searchedUser: userResProps) => {
     const isUserAlreadyAdded = searchedUsersList.some(
@@ -64,12 +66,9 @@ export function UserContextProvider({ children }: ContextProps) {
       setUser(userData);
       addSearchUser(userData);
     } catch (error) {
-      toast.error(
-        `Não foi possível encontrar o usuário ${username}`,
-        {
-          position: toast.POSITION.TOP_RIGHT,
-        }
-      );
+      toast.error(`Não foi possível encontrar o usuário ${username}`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   };
 
@@ -90,3 +89,25 @@ export function UserContextProvider({ children }: ContextProps) {
 export const UseGlobalContext = () => {
   return useContext(GlobalContext);
 };
+
+// const addSearchUser = async (searchedUser: userResProps) => {
+//   const searchedNames = searchedUsersList.map(
+//     (user: userResProps) => user.login
+//   );
+
+//   if (!searchedNames.includes(searchedUser.login)) {
+//     setSearchUsersList((prevSearchUsersList) => [
+//       ...prevSearchUsersList,
+//       searchedUser,
+//     ]);
+//   }
+
+//   setSearchUsersList((updatedSearchUsersList) => {
+//     localStorage.setItem(
+//       "searchedUsers",
+//       JSON.stringify(updatedSearchUsersList)
+//     );
+
+//     return updatedSearchUsersList;
+//   });
+// };
