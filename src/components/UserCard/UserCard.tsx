@@ -14,6 +14,7 @@ export default function UserCard({
 }: userResProps) {
   return (
     <div className={sytles.userCard}>
+      
       <div className={sytles.userCardAvatar}>
         <Link href={`/user-detail/${encodeURIComponent(login)}`}>
           <img src={avatar_url} alt={login} />

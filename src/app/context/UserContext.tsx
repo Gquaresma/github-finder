@@ -5,6 +5,7 @@ import { ApiResponseData, ApiResponseRepositories } from "@/types/ApiResponse";
 import { userResProps } from "@/types/UserProps";
 import { UserProviderProps } from "@/types/UserProvider";
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const GlobalContext = createContext<UserProviderProps>({} as UserProviderProps);
 
@@ -63,7 +64,12 @@ export function UserContextProvider({ children }: ContextProps) {
       setUser(userData);
       addSearchUser(userData);
     } catch (error) {
-      window.alert("Usuário não encontrado");
+      toast.error(
+        `Não foi possível encontrar o usuário ${username}`,
+        {
+          position: toast.POSITION.TOP_RIGHT,
+        }
+      );
     }
   };
 
